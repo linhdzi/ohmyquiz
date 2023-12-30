@@ -10,6 +10,8 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
+    // id 'com.github.gmazzo.fontawesome' version '0.5'
+    // id 'com.siprell.plugins.bootstrap-framework' version "1.0.3"
 }
 
 repositories {
@@ -21,6 +23,11 @@ dependencies {
     // This dependency is used by the application.
     implementation libs.guava
     implementation 'org.mongodb:mongodb-driver-sync:4.8.2'
+    implementation group: 'com.github.jiconfont', name: 'jiconfont-font_awesome', version: '4.5.0.3'
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
+
 }
 
 testing {
@@ -42,6 +49,13 @@ java {
 javafx {
     version = "17.0.9"
     modules = ['javafx.controls', 'javafx.fxml']
+}
+sourceSets {
+    main {
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
 }
 application {
     // Define the main class for the application.
