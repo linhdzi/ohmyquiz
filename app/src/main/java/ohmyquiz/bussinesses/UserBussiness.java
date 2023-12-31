@@ -10,4 +10,8 @@ public class UserBussiness {
         var result = usersDataAccess.createUser(user);
         return result;
     }
+    public boolean getByUsernamePassword(String username, String password){
+        var result = usersDataAccess.getByUsernamePassword(username, password);
+        return result;
+    }
 }

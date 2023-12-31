@@ -9,10 +9,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import ohmyquiz.bussinesses.UserBussiness;
+import ohmyquiz.dataAccesses.Connection;
 import ohmyquiz.models.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
+import org.mindrot.jbcrypt.BCrypt;
+
+import com.mongodb.client.model.Filters;
 
 public class RegisterController implements Initializable {
     @FXML
@@ -36,9 +41,6 @@ public class RegisterController implements Initializable {
     private PasswordField confirmPasswordField;
 
     @FXML
-    private Button signInButton;
-
-    @FXML
     private void signInButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -57,20 +59,32 @@ public class RegisterController implements Initializable {
             showErrorAlert("Password and confirm password do not match!");
         } else {
 
-            User user = new User();
-            user.setName(username);
-            user.setPassword(password);
-            user.setEmail(email);
+            var collection = Connection.collection("User");
+            long usernameCount = collection.countDocuments(Filters.eq("name", username));
+            long emailCount = collection.countDocuments(Filters.eq("email", email));
 
-            UserBussiness userBusiness = new UserBussiness();
-            boolean result = userBusiness.createUser(user);
-
-            if (result) {
-                Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                successAlert.setContentText("Register Successfully");
-                successAlert.show();
+            if (usernameCount > 0) {
+                showErrorAlert("Username is existed, please try again!");
+            } else if (emailCount > 0) {
+                showErrorAlert("Email is existed, please try again!");
             } else {
-                showErrorAlert("something went wrong!");
+                User user = new User();
+                user.setGuid(UUID.randomUUID().toString());
+                user.setName(username);
+                user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+                user.setEmail(email);
+                user.setRole("learner");
+                
+                UserBussiness userBusiness = new UserBussiness();
+                boolean result = userBusiness.createUser(user);
+
+                if (result) {
+                    Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                    successAlert.setContentText("Register Successfully");
+                    successAlert.show();
+                } else {
+                    showErrorAlert("something went wrong!");
+                }
             }
         }
     }
