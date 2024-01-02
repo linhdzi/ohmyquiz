@@ -12,6 +12,12 @@ public class User {
     private String country;
     private String role;
 
+    // public static Map userRoles;
+    // {
+    //     "learner": "learner",
+    //     "trainer": "trainer"
+    // }
+
     public String getGuid() {
         return this.guid;
     }

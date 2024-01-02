@@ -4,7 +4,6 @@ public class RegisterModel {
     private String username;
     private String password;
 
-
     public String getUsername() {
         return this.username;
     }
@@ -20,7 +19,6 @@ public class RegisterModel {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public RegisterModel(String username, String password) {
         this.username = username;

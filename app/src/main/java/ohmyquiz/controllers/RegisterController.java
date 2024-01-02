@@ -41,7 +41,7 @@ public class RegisterController implements Initializable {
     private PasswordField confirmPasswordField;
 
     @FXML
-    private void signInButtonAction() {
+    private void signUpButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
