@@ -2,8 +2,6 @@ package ohmyquiz.controllers;
 
 import java.io.IOException;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

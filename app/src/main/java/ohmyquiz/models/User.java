@@ -1,5 +1,7 @@
 package ohmyquiz.models;
-import java.util.Objects;
+
+import java.util.Map;
+import java.util.HashMap;
 
 public class User {
     private String guid;
@@ -8,15 +10,19 @@ public class User {
     private String email;
     private String createdAt;
     private String updatedAt;
-    private String gender;
     private String country;
-    private String role;
 
-    // public static Map userRoles;
-    // {
-    //     "learner": "learner",
-    //     "trainer": "trainer"
-    // }
+    public static Map<String, String> role = new HashMap<>();
+    {
+        role.put("learner", "learner");
+        role.put("trainer", "trainer");
+    }
+    public static Map<String, String> gender = new HashMap<>();
+    {
+        gender.put("male", "male");
+        gender.put("female", "female");
+        gender.put("other", "prefer not to disclose");
+    }
 
     public String getGuid() {
         return this.guid;
@@ -50,14 +56,6 @@ public class User {
         this.email = email;
     }
 
-    public String getGender() {
-        return this.gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getCountry() {
         return this.country;
     }
@@ -65,15 +63,6 @@ public class User {
     public void setCountry(String country) {
         this.country = country;
     }
-
-    public String getRole() {
-        return this.role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
 
     public String getCreatedAt() {
         return this.createdAt;
@@ -91,5 +80,4 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    
 }
