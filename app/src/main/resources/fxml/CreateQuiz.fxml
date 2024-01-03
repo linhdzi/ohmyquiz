@@ -8,27 +8,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@createquiz.css" />
     </stylesheets>
    <children>
-      <TableView layoutX="300.8" layoutY="64.0" prefHeight="216.0" prefWidth="299.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+      <TableView layoutX="300.0" layoutY="64.0" prefHeight="276.0" prefWidth="299.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="64.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="76.0" text="TOPIC" />
+          <TableColumn prefWidth="34.39996337890625" text="ID" />
+          <TableColumn prefWidth="260.79998779296875" text="Answer" />
         </columns>
       </TableView>
       <Button layoutX="310.0" layoutY="355.0" mnemonicParsing="false" text="Add Question" />
       <TableView layoutY="64.0" prefHeight="335.0" prefWidth="299.0" style="-fx-border-color: black;">
          <columns>
             <TableColumn prefWidth="75.0" text="ID" />
-            <TableColumn prefWidth="76.0" text="Question" />
+            <TableColumn prefWidth="221.6000244140625" text="Question" />
          </columns>
       </TableView>
-      <Button layoutX="310.0" layoutY="306.0" mnemonicParsing="false" text="Add Topic" />
       <Button layoutX="532.0" layoutY="355.0" mnemonicParsing="false" text="Back" />
-      <Text layoutX="183.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE UPDATE">
+      <Text layoutX="205.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE QUIZ">
          <font>
             <Font size="32.0" />
          </font>
