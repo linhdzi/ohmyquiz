@@ -1,5 +1,7 @@
 package ohmyquiz.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -16,7 +19,6 @@ import ohmyquiz.App;
 import ohmyquiz.bussinesses.UserBussiness;
 import ohmyquiz.dataAccesses.Connection;
 import ohmyquiz.models.User;
-import javafx.scene.Node;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,11 +32,6 @@ public class RegisterController implements Initializable {
     @FXML
     BorderPane borderPane;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
     @FXML
     private TextField usernameField;
 
@@ -46,6 +43,22 @@ public class RegisterController implements Initializable {
 
     @FXML
     private PasswordField confirmPasswordField;
+
+    @FXML
+    private ChoiceBox<String> roleComboBox;
+
+    private String selectedRole;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> options = FXCollections.observableArrayList("Learner", "Trainer");
+        roleComboBox.setItems(options);
+        roleComboBox.setValue("Learner");
+
+        roleComboBox.setOnAction(event -> {
+            selectedRole = roleComboBox.getValue();
+        });
+    }
 
     @FXML
     private void signUpButtonAction() {
@@ -80,7 +93,7 @@ public class RegisterController implements Initializable {
                 user.setName(username);
                 user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
                 user.setEmail(email);
-                String Role = User.role.get("learner");
+                String Role = User.role.get(selectedRole);
 
                 UserBussiness userBusiness = new UserBussiness();
                 boolean result = userBusiness.createUser(user, Role);
@@ -90,9 +103,8 @@ public class RegisterController implements Initializable {
                     successAlert.setContentText("Register Successfully");
                     successAlert.show();
 
-                    Parent root;
                     try {
-                        root = FXMLLoader.load(App.class.getResource("/fxml/login.fxml"));
+                        Parent root = FXMLLoader.load(App.class.getResource("/fxml/login.fxml"));
                         Scene scene = new Scene(root);
 
                         Stage stage = (Stage) borderPane.getScene().getWindow();

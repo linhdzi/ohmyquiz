@@ -11,6 +11,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.collections.FXCollections?>
 
 <BorderPane id="borderPane" fx:id="borderPane" prefHeight="500.0" prefWidth="700.0"
     xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
@@ -60,6 +62,8 @@
                 <PasswordField layoutX="91.0" layoutY="274.0" promptText="Confirm Password"
                     style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;"
                     fx:id="confirmPasswordField" />
+                <Text  layoutX="91.0" layoutY="380.0">You want to be</Text>
+                <ChoiceBox layoutX="175.0" layoutY="365.0" fx:id="roleComboBox" />
                 <Button layoutX="123.0" layoutY="420.0" mnemonicParsing="false" prefHeight="42.0"
                     prefWidth="85.0" style="-fx-background-color: #0598ff;" text="Sign Up"
                     onAction="#signUpButtonAction" />
