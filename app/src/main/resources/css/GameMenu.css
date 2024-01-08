@@ -9,5 +9,5 @@
 }
 
 .button:hover {
-    -fx-background-color: linear-gradient(to bottom, black, #00ff00);
+    -fx-background-color: linear-gradient(to bottom, black, #000dff);
 }

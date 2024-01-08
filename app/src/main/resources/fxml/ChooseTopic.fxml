@@ -8,7 +8,7 @@
    <children>
       <Text layoutX="243.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOPIC">
          <font>
-            <Font size="42.0" />
+            <Font size="4 2.0" />
          </font>
       </Text>
    </children>

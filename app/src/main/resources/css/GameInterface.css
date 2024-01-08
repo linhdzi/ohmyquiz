@@ -1,0 +1,40 @@
+#timeBlock {
+    -fx-alignment: "CENTER";
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: green;
+}
+
+#sectionContent {
+    -fx-font-size: 20px;
+    -fx-padding: 20px 0 0 20px;
+}
+
+#previousButton,
+#nextButton {
+    -fx-pref-width: 130px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+#previousNextButton {
+    -fx-font-size: 20px;
+    -fx-alignment: CENTER;
+}
+
+RadioButton {
+    -fx-padding: 20px 0 0 50px;
+}
+
+#answerContent Label {
+    -fx-padding: 20px 0 0 20px;
+
+}
+
+#answerContent {
+    -fx-font-size: 20px;
+}
+
+#small{
+    -fx-font-size:16px;
+}
