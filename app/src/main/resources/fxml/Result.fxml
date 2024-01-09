@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+   minWidth="-Infinity" prefHeight="475.0" prefWidth="660.0"
+   style="-fx-background-color: linear-gradient(to bottom, #293950, #232324);;"
+   xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="ohmyquiz.controllers.ResultController">
+   <stylesheets>
+      <URL value="@../css/Result.css" />
+   </stylesheets>
+   <top>
+      <VBox fx:id="top" prefHeight="74.0" prefWidth="660.0" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="alertVbox" alignment="CENTER" prefHeight="360.0" prefWidth="375.0"
+               style="-fx-background-color: #384359; -fx-background-radius: 10px;">
+               <children>
+                  <HBox fx:id="congraturationHbox" alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefWidth="241.0"
+                           style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"
+                           text="Congraturations you have passed the quiz" textAlignment="CENTER"
+                           wrapText="true" HBox.hgrow="ALWAYS" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="percentHbox" alignment="CENTER" prefHeight="70.0" prefWidth="373.0">
+                     <children>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <AnchorPane prefWidth="375.0">
+                                 <children>
+                                    <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="156.0"
+                                       layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/hexagon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <HBox alignment="CENTER" prefHeight="70.0" prefWidth="375.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER"
+                                             style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"
+                                             text="100%" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="scoreHbox" alignment="CENTER" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefWidth="375.0">
+                           <children>
+                              <Label
+                                 style="-fx-font-size: 13px; -fx-text-fill: white; -fx-font-weight: bold;"
+                                 text="Your Score For This Attempt : 60" />
+                              <Label style="-fx-text-fill: white;" text="Total questions: 10" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="sumUpHbox" alignment="BOTTOM_CENTER" prefHeight="95.0">
+                     <children>
+                        <VBox alignment="CENTER" prefWidth="74.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="46.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
+                                       preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/correct.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="43.0" prefWidth="85.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: white; -fx-font-size: 10px;"
+                                       text="Right" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="100.0">
+                                 <children>
+                                    <HBox alignment="TOP_CENTER" prefWidth="200.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: white;" text="6" />
+                                          <Label contentDisplay="CENTER" graphicTextGap="50.0"
+                                             style="-fx-background-color: #29B388; -fx-background-radius: 10px; -fx-text-fill: white; -fx-font-size: small;"
+                                             text="+50">
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="148.0" layoutY="10.0" prefWidth="70.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="46.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
+                                       preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/wrong.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="43.0" prefWidth="100.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: white; -fx-font-size: 10px;"
+                                       text="Wrong" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="100.0">
+                                 <children>
+                                    <HBox alignment="TOP_CENTER" prefWidth="200.0">
+                                       <children>
+                                          <Label style="-fx-text-fill: white;" text="2" />
+                                          <Label contentDisplay="CENTER" graphicTextGap="50.0"
+                                             style="-fx-background-color: #C55B5B; -fx-background-radius: 10px; -fx-text-fill: white; -fx-font-size: small;"
+                                             text="-10">
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="198.0" layoutY="10.0" prefWidth="70.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="46.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
+                                       preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/warning.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="43.0" prefWidth="100.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: white; -fx-font-size: 10px;"
+                                       text="Unanswered" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefWidth="100.0">
+                                 <children>
+                                    <HBox alignment="TOP_CENTER">
+                                       <children>
+                                          <Label style="-fx-text-fill: white;" text="1" />
+                                          <Label contentDisplay="CENTER" graphicTextGap="50.0"
+                                             style="-fx-background-color: #D9A155; -fx-background-radius: 10px; -fx-text-fill: white; -fx-font-size: small;"
+                                             text="0">
+                                             <padding>
+                                                <Insets left="5.0" right="5.0" />
+                                             </padding>
+                                             <HBox.margin>
+                                                <Insets left="5.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="reviewHbox" alignment="CENTER" prefHeight="60.0" prefWidth="375.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="87.0" prefWidth="376.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="375.0">
+                                 <children>
+                                    <Button mnemonicParsing="false"
+                                       style="-fx-border-width: 1px; -fx-border-color: white; -fx-border-radius: 15px; -fx-background-color: #384359; -fx-text-fill: white; -fx-font-size: small;"
+                                       text="Review Question" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <VBox fx:id="gotoActivitiesVbox" alignment="CENTER" prefHeight="74.0" prefWidth="660.0"
+         BorderPane.alignment="CENTER">
+         <children>
+            <Button id="nextButton" alignment="CENTER" contentDisplay="CENTER"
+               mnemonicParsing="false" prefHeight="44.0" prefWidth="170.0"
+               style="-fx-background-color: white; -fx-background-radius: 25px; -fx-font-weight: bold;"
+               text="Go to activities" />
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

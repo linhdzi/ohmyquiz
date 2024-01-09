@@ -2,8 +2,6 @@ package ohmyquiz.controllers;
 
 import java.io.IOException;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,13 +38,13 @@ public class LoginController {
             showErrorAlert("Password must be not empty!");
         } else {
             UserBussiness userBusiness = new UserBussiness();
-            boolean result = userBusiness.getByUsernamePassword(username,password);
+            boolean result = userBusiness.getByUsernamePassword(username, password);
 
-            if(result){
+            if (result) {
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                    successAlert.setContentText("Login Successfully");
-                    successAlert.show();
-            }else{
+                successAlert.setContentText("Login Successfully");
+                successAlert.show();
+            } else {
                 showErrorAlert("Username or password is incorrect!");
             }
         }
@@ -60,7 +58,6 @@ public class LoginController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
@@ -71,7 +68,6 @@ public class LoginController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void showErrorAlert(String contentText) {

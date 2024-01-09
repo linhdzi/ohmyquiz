@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+   minWidth="-Infinity" prefHeight="800.0" prefWidth="1123.0"
+   style="-fx-background-color: linear-gradient(to bottom, #293950, #232324);"
+   xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="ohmyquiz.controllers.AreYouReadyController">
+   <stylesheets>
+      <URL value="@../css/AreYouReady.css" />
+  </stylesheets>
+   <children>
+      <VBox spacing="0.0" >
+         <VBox fx:id="readyLabelVbox" alignment="CENTER">
+            <children>
+               <Label alignment="CENTER" contentDisplay="CENTER"
+                  style="-fx-text-fill: white; -fx-font-size: 25px; -fx-font-weight: bold;"
+                  text="Are You Ready?" />
+            </children>
+         </VBox>
+         <VBox fx:id="instructionVbox" alignment="CENTER">
+            <children>
+               <HBox fx:id="instructionHbox" alignment="CENTER">
+                  <VBox alignment="TOP_CENTER"
+                     style="-fx-background-color: #35435B; -fx-background-radius: 15px;">
+                     <children>
+                        <HBox prefHeight="64.0" prefWidth="586.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="27.0" prefWidth="586.0"
+                                 style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 20px;"
+                                 text="Instructions">
+                                 <HBox.margin>
+                                    <Insets top="25.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutY="64.0" prefWidth="586.0">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true"
+                                       preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@../image/timer.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label prefWidth="504.0"
+                                       style="-fx-text-fill: white; -fx-font-size: 16px;"
+                                       text="You have 15 minutes to answer 20 questions. The timer will keep runnig even if you leave the quiz."
+                                       wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="35.0" right="35.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="3.0" layoutY="128.0" prefWidth="586.0">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true"
+                                       preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@../image/scope.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label prefWidth="504.0"
+                                       style="-fx-text-fill: white; -fx-font-size: 16px;"
+                                       text="Please choose your answer carefully. Once submited, your response will be treated as final."
+                                       wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="35.0" right="35.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="3.0" layoutY="192.0" prefWidth="586.0">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true"
+                                       preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@../image/puzzle.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label prefWidth="504.0"
+                                       style="-fx-text-fill: white; -fx-font-size: 16px;"
+                                       text="There are 3 sections, Section 1 has 4 questions, Section 2 has 4 questions, Section 3 has 5 questions."
+                                       wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="35.0" right="35.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="2.0" layoutY="256.0" prefWidth="586.0">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true"
+                                       preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@../image/wifi.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label prefWidth="504.0"
+                                       style="-fx-text-fill: white; -fx-font-size: 16px;"
+                                       text="Please make sure you have stable internet connection."
+                                       wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="35.0" right="35.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="2.0" layoutY="320.0" prefWidth="586.0">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <ImageView fitHeight="28.0" fitWidth="27.0" pickOnBounds="true"
+                                       preserveRatio="true" VBox.vgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@../image/hangout.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label prefWidth="504.0"
+                                       style="-fx-text-fill: white; -fx-font-size: 16px;"
+                                       text="Custom Instruction." wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="35.0" right="35.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </HBox>
+
+            </children>
+         </VBox>
+         <VBox fx:id="chooseModeVbox" alignment="CENTER">
+            <children>
+               <HBox fx:id="chooseModeHbox" alignment="TOP_CENTER" spacing="30.0"
+                  >
+                  <children>
+                     <Button alignment="CENTER" mnemonicParsing="false" prefHeight="54.0"
+                        prefWidth="278.0"
+                        style="-fx-background-color: #35435B; -fx-text-fill: white; -fx-background-radius: 15px;"
+                        text="Dark Mode">
+                        <graphic>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" HBox.hgrow="ALWAYS">
+                              <image>
+                                 <Image url="@../image/moon.png" />
+                              </image>
+                              <HBox.margin>
+                                 <Insets />
+                              </HBox.margin>
+                           </ImageView>
+                        </graphic>
+                     </Button>
+                     <Button alignment="CENTER" layoutX="10.0" layoutY="25.0"
+                        mnemonicParsing="false" prefHeight="54.0" prefWidth="278.0"
+                        style="-fx-background-color: #35435B; -fx-text-fill: white; -fx-background-radius: 15px;"
+                        text="Light Mode">
+                        <graphic>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" HBox.hgrow="ALWAYS">
+                              <image>
+                                 <Image url="@../image/sun.png" />
+                              </image>
+                              <HBox.margin>
+                                 <Insets />
+                              </HBox.margin>
+                           </ImageView>
+                        </graphic>
+                     </Button>
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+         <VBox fx:id="startQuizVbox" alignment="BOTTOM_CENTER">
+            <children>
+               <Button id="startButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="206.0"
+                  style="-fx-background-color: white; -fx-background-radius: 25px; -fx-font-weight: bold;"
+                  text="Start Quiz">
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </Button>
+            </children>
+            <padding>
+               <Insets bottom="30.0" />
+            </padding>
+         </VBox>
+      </VBox>
+   </children>
+</AnchorPane>

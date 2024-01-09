@@ -13,7 +13,7 @@ import org.bson.BsonTimestamp;
 import ohmyquiz.models.User;
 
 public class UsersDataAccess {
-    public boolean createUser(User user) {
+    public boolean createUser(User user,String Role) {
         var connection = Connection.createConnection();
         MongoDatabase database = connection.getDatabase("OhMyQuiz");
         MongoCollection<Document> collection = database.getCollection("User");
@@ -26,13 +26,15 @@ public class UsersDataAccess {
             Connection.closeConnection(connection);
             return false;
         } else {
+            // String Role = User.role.get("learner");
             Document userDocument = new Document()
                     .append("guid", user.getGuid())
                     .append("name", user.getName())
                     .append("email", user.getEmail())
                     .append("password", user.getPassword())
                     .append("createdAt", new BsonTimestamp())
-                    .append("role", user.getRole());
+                    .append("role",  Role);
+                    System.out.println(userDocument);
             try {
                 collection.insertOne(userDocument);
                 return true;

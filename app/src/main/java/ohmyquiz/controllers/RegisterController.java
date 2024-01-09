@@ -1,17 +1,26 @@
 package ohmyquiz.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import ohmyquiz.App;
 import ohmyquiz.bussinesses.UserBussiness;
 import ohmyquiz.dataAccesses.Connection;
 import ohmyquiz.models.User;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.UUID;
@@ -22,11 +31,6 @@ import com.mongodb.client.model.Filters;
 public class RegisterController implements Initializable {
     @FXML
     BorderPane borderPane;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 
     @FXML
     private TextField usernameField;
@@ -41,7 +45,23 @@ public class RegisterController implements Initializable {
     private PasswordField confirmPasswordField;
 
     @FXML
-    private void signInButtonAction() {
+    private ChoiceBox<String> roleComboBox;
+
+    private String selectedRole;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> options = FXCollections.observableArrayList("Learner", "Trainer");
+        roleComboBox.setItems(options);
+        roleComboBox.setValue("Learner");
+
+        roleComboBox.setOnAction(event -> {
+            selectedRole = roleComboBox.getValue();
+        });
+    }
+
+    @FXML
+    private void signUpButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
@@ -73,15 +93,27 @@ public class RegisterController implements Initializable {
                 user.setName(username);
                 user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
                 user.setEmail(email);
-                user.setRole("learner");
-                
+                String Role = User.role.get(selectedRole);
+
                 UserBussiness userBusiness = new UserBussiness();
-                boolean result = userBusiness.createUser(user);
+                boolean result = userBusiness.createUser(user, Role);
 
                 if (result) {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setContentText("Register Successfully");
                     successAlert.show();
+
+                    try {
+                        Parent root = FXMLLoader.load(App.class.getResource("/fxml/login.fxml"));
+                        Scene scene = new Scene(root);
+
+                        Stage stage = (Stage) borderPane.getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.sizeToScene();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 } else {
                     showErrorAlert("something went wrong!");
                 }
@@ -94,4 +126,5 @@ public class RegisterController implements Initializable {
         errAlert.setContentText(contentText);
         errAlert.show();
     }
+
 }
