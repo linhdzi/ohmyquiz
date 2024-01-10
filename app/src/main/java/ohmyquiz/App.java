@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        scene = new Scene(loadFXML("AreYouReady"));
+        scene = new Scene(loadFXML("Settings"));
         primaryStage.setScene(scene);
         primaryStage.setFullScreen(true);
         primaryStage.show();
