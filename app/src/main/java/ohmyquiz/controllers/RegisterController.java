@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -24,6 +23,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.UUID;
+
+import org.checkerframework.checker.units.qual.h;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.mongodb.client.model.Filters;
@@ -51,9 +52,10 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> options = FXCollections.observableArrayList("Learner", "Trainer");
+        ObservableList<String> options = FXCollections.observableArrayList(User.role.keySet());
         roleComboBox.setItems(options);
-        roleComboBox.setValue("Learner");
+        roleComboBox.setValue(options.get(0));
+        selectedRole = options.get(0);
 
         roleComboBox.setOnAction(event -> {
             selectedRole = roleComboBox.getValue();
@@ -104,12 +106,14 @@ public class RegisterController implements Initializable {
                     successAlert.show();
 
                     try {
+                        double width = borderPane.getScene().getWidth();
+                        double height = borderPane.getScene().getHeight();
+
                         Parent root = FXMLLoader.load(App.class.getResource("/fxml/login.fxml"));
-                        Scene scene = new Scene(root);
+                        Scene scene = new Scene(root,width,height);
 
                         Stage stage = (Stage) borderPane.getScene().getWindow();
                         stage.setScene(scene);
-                        stage.sizeToScene();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

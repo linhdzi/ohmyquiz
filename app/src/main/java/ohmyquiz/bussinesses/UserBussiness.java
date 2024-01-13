@@ -1,5 +1,7 @@
 package ohmyquiz.bussinesses;
 
+import org.bson.Document;
+
 import ohmyquiz.dataAccesses.UsersDataAccess;
 import ohmyquiz.models.User;
 
@@ -11,7 +13,7 @@ public class UserBussiness {
         return result;
     }
 
-    public boolean getByUsernamePassword(String username, String password) {
+    public Document getByUsernamePassword(String username, String password) {
         var result = usersDataAccess.getByUsernamePassword(username, password);
         return result;
     }

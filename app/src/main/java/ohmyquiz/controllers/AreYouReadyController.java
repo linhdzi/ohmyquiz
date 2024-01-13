@@ -1,12 +1,18 @@
 package ohmyquiz.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import ohmyquiz.App;
 import javafx.scene.layout.HBox;
 
 public class AreYouReadyController implements Initializable {
@@ -31,9 +37,26 @@ public class AreYouReadyController implements Initializable {
     @FXML
     private VBox startQuizVbox;
 
+    @FXML
+    public void startButtonAction() {
+        try {
+            double width = anchorPane.getScene().getWidth();
+            double height = anchorPane.getScene().getHeight();
+            
+            Parent root = FXMLLoader.load(App.class.getResource("/fxml/UiGame.fxml"));
+            Scene scene = new Scene(root,width,height);
+
+            Stage stage = (Stage) anchorPane.getScene().getWindow();
+            stage.setScene(scene);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
         anchorPane.widthProperty().addListener((obs, oldWidth, newWidth) -> {
             responseWidth(newWidth.doubleValue());
         });

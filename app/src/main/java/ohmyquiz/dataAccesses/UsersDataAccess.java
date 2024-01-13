@@ -47,7 +47,7 @@ public class UsersDataAccess {
         }
     }
 
-    public boolean getByUsernamePassword(String username, String password) {
+    public Document getByUsernamePassword(String username, String password) {
         var connection = Connection.createConnection();
         MongoDatabase database = connection.getDatabase("OhMyQuiz");
         MongoCollection<Document> collection = database.getCollection("User");
@@ -63,15 +63,14 @@ public class UsersDataAccess {
             boolean checkPassword = BCrypt.checkpw(password, passwordFromDB);
             if (checkPassword) {
                 Connection.closeConnection(connection);
-                return true;
+                return result;
             } else {
                 Connection.closeConnection(connection);
-                return false;
+                return null;
             }
         } else {
             Connection.closeConnection(connection);
-            return false;
+            return null;
         }
-
     }
 }
