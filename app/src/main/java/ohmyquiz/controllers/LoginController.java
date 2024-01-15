@@ -84,7 +84,7 @@ public class LoginController {
         double width = borderPane.getScene().getWidth();
         double height = borderPane.getScene().getHeight();
 
-        Parent root = FXMLLoader.load(App.class.getResource("/fxml/Forgotpassword.fxml"));
+        Parent root = FXMLLoader.load(App.class.getResource("/fxml/ForgotPassword.fxml"));
         Scene scene = new Scene(root, width, height);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -10,8 +10,6 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
-    // id 'com.github.gmazzo.fontawesome' version '0.5'
-    // id 'com.siprell.plugins.bootstrap-framework' version "1.0.3"
 }
 
 repositories {
@@ -28,6 +26,9 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.32'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
     implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
+    implementation files('src/main/resources/fontAwesome/fontawesomefx-8.2.jar')
+    implementation 'org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0'
+   
 }
 
 testing {
