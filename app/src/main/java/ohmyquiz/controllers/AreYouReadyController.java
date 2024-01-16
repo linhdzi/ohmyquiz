@@ -33,12 +33,6 @@ public class AreYouReadyController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        // double totalHeight = anchorPane.getPrefHeight();
-        // double totalWidth = anchorPane.getPrefWidth();
-
-        // responseHeight(totalHeight);
-        // responseWidth(totalWidth);
         
         anchorPane.widthProperty().addListener((obs, oldWidth, newWidth) -> {
             responseWidth(newWidth.doubleValue());
