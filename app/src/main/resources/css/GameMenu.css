@@ -1,0 +1,13 @@
+.button {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-background-radius: 10;
+    -fx-transition-duration: 0.5s;
+    -fx-transition-property: -fx-background-color;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, black, #00ff00);
+}
