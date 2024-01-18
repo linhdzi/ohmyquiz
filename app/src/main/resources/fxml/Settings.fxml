@@ -127,7 +127,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" style="-fx-border-width: 0 1 1 0; -fx-border-color: #EBEBEB;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                        <children>
-                                          <TextField maxWidth="70.0" prefHeight="40.0" prefWidth="70.0" promptText="0" style="-fx-border-radius: 10px; -fx-border-color: #EBEBEB; -fx-background-radius: 10px; -fx-background-color: white;">
+                                          <TextField focusTraversable="false" maxWidth="70.0" prefHeight="40.0" prefWidth="70.0" promptText="0" style="-fx-border-radius: 10px; -fx-border-color: #EBEBEB; -fx-background-radius: 10px; -fx-background-color: white;">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>

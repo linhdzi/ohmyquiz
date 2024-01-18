@@ -2,6 +2,8 @@ package ohmyquiz.controllers;
 
 import java.io.IOException;
 
+import org.bson.Document;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +22,7 @@ import javafx.scene.Node;
 public class LoginController {
     @FXML
     BorderPane borderPane;
-
+    
     @FXML
     private TextField usernameField;
 
@@ -38,12 +40,39 @@ public class LoginController {
             showErrorAlert("Password must be not empty!");
         } else {
             UserBussiness userBusiness = new UserBussiness();
-            boolean result = userBusiness.getByUsernamePassword(username, password);
+            Document result = userBusiness.getByUsernamePassword(username, password);
 
-            if (result) {
-                Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                successAlert.setContentText("Login Successfully");
-                successAlert.show();
+            if (result != null) {
+                String role = result.getString("role");
+                if (role.equals("learner")) {
+                    try {
+                        double width = borderPane.getScene().getWidth();
+                        double height = borderPane.getScene().getHeight();
+
+                        Parent root = FXMLLoader.load(App.class.getResource("/fxml/AreYouReady.fxml"));
+                        Scene scene = new Scene(root, width, height);
+
+                        Stage stage = (Stage) borderPane.getScene().getWindow();
+                        stage.setScene(scene);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (role.equals("trainer")) {
+                    try {
+                        double width = borderPane.getScene().getWidth();
+                        double height = borderPane.getScene().getHeight();
+
+                        Parent root = FXMLLoader.load(App.class.getResource("/fxml/Settings.fxml"));
+                        Scene scene = new Scene(root, width, height);
+
+                        Stage stage = (Stage) borderPane.getScene().getWindow();
+                        stage.setScene(scene);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             } else {
                 showErrorAlert("Username or password is incorrect!");
             }
@@ -52,22 +81,26 @@ public class LoginController {
 
     @FXML
     public void handleForgotPasswordLink(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(App.class.getResource("/fxml/Forgotpassword.fxml"));
-        Scene scene = new Scene(root);
+        double width = borderPane.getScene().getWidth();
+        double height = borderPane.getScene().getHeight();
+
+        Parent root = FXMLLoader.load(App.class.getResource("/fxml/ForgotPassword.fxml"));
+        Scene scene = new Scene(root, width, height);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.show();
     }
 
     @FXML
     public void handleRegisterLink(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(App.class.getResource("/fxml/Register.fxml"));
-        Scene scene = new Scene(root);
+        double width = borderPane.getScene().getWidth();
+        double height = borderPane.getScene().getHeight();
 
+        Parent root = FXMLLoader.load(App.class.getResource("/fxml/Register.fxml"));
+        Scene scene = new Scene(root,width,height);
+        
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.show();
     }
 
     public void showErrorAlert(String contentText) {

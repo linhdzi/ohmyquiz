@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -88,12 +89,13 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="46.0" prefWidth="100.0">
                                  <children>
-                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                                       preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/correct.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" prefHeight="35.0" prefWidth="35.0"
+                                       style="-fx-background-color: #29B388; -fx-background-radius: 35px;">
+                                       <children>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="CHECK"
+                                             size="1.75em" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="43.0" prefWidth="85.0">
@@ -127,12 +129,13 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="46.0" prefWidth="100.0">
                                  <children>
-                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                                       preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/wrong.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" prefHeight="35.0" prefWidth="35.0"
+                                       style="-fx-background-color: #C55B5B; -fx-background-radius: 35px;">
+                                       <children>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="TIMES"
+                                             size="1.75em" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="43.0" prefWidth="100.0">
@@ -166,12 +169,13 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="46.0" prefWidth="100.0">
                                  <children>
-                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                                       preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/warning.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" prefHeight="35.0" prefWidth="35.0"
+                                       style="-fx-background-color: #D9A155; -fx-background-radius: 35px;">
+                                       <children>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="EXCLAMATION"
+                                             size="1.75em" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="43.0" prefWidth="100.0">

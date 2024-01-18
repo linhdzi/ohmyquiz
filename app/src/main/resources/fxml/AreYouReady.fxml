@@ -247,7 +247,7 @@
             <children>
                <Button id="startButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="206.0"
                   style="-fx-background-color: white; -fx-background-radius: 25px; -fx-font-weight: bold;"
-                  text="Start Quiz">
+                  text="Start Quiz" onAction="#startButtonAction">
                   <VBox.margin>
                      <Insets />
                   </VBox.margin>
