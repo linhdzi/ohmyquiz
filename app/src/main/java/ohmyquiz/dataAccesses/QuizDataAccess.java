@@ -21,7 +21,6 @@ import javafx.scene.input.MouseEvent;
 
 import org.bson.BsonTimestamp;
 
-
 import ohmyquiz.models.User;
 
 public class QuizDataAccess {
@@ -181,8 +180,6 @@ public class QuizDataAccess {
         return sectionGuids;
     }
 
- 
- 
     public void AddSection(String newSectionTitle) {
         var connection = Connection.createConnection();
         MongoDatabase database = connection.getDatabase("OhMyQuiz");
@@ -254,62 +251,163 @@ public class QuizDataAccess {
         collection.updateOne(sectionFilter, sectionUpdate);
     }
 
-    public void UpdateQuestion( String questionGuid, String newTitle, String newContent, String newDifficulty) {
+    public void UpdateQuestion(String questionGuid, String newTitle, String newContent, String newDifficulty) {
         var connection = Connection.createConnection();
         MongoDatabase database = connection.getDatabase("OhMyQuiz");
         MongoCollection<Document> collection = database.getCollection("Quiz");
-    
-        // Tạo document chứa thông tin câu hỏi cần cập nhật
-        Document updatedQuestion = new Document();
-        updatedQuestion.append("title", newTitle);
-        updatedQuestion.append("content", newContent);
-        updatedQuestion.append("difficulty", newDifficulty);
-    
-        // Tìm section và câu hỏi cần cập nhật
+
         Bson sectionFilter = Filters.eq("sections.questions.questionGuid", questionGuid);
         System.out.println(sectionFilter);
-   
-        Document update = new Document("$set", new Document("sections.$.questions", updatedQuestion));
-    
-        // Thực hiện cập nhật câu hỏi
-        collection.updateOne(sectionFilter, update);
+
+        Document updatedQuestion = new Document();
+        updatedQuestion.append("sections.$[section].questions.$[question].title", newTitle);
+        updatedQuestion.append("sections.$[section].questions.$[question].content", newContent);
+        updatedQuestion.append("sections.$[section].questions.$[question].difficulty", newDifficulty);
+
+        Document update = new Document("$set", updatedQuestion);
+
+        List<Bson> arrayFilters = new ArrayList<>();
+        arrayFilters.add(Filters.eq("section.questions.questionGuid", questionGuid));
+        arrayFilters.add(Filters.eq("question.questionGuid", questionGuid));
+
+        UpdateOptions options = new UpdateOptions().arrayFilters(arrayFilters);
+        collection.updateOne(sectionFilter, update, options);
+
+        // // Thiết lập thông tin cho câu hỏi mới trong updatedQuestion
+        // Bson sectionFilter = Filters.eq("sections.questions.questionGuid",
+        // questionGuid);
+
+        // // Tạo document chứa thông tin câu hỏi cần cập nhật
+        // Document updatedQuestion = new Document();
+        // updatedQuestion.append("sections.$.questions.$.title", newTitle);
+        // updatedQuestion.append("sections.$.questions.$.content", newContent);
+        // updatedQuestion.append("sections.$.questions.$.difficulty", newDifficulty);
+        // // updatedQuestion.append("title", newTitle);
+        // // updatedQuestion.append("content", newContent);
+        // // updatedQuestion.append("difficulty", newDifficulty);
+
+        // // Document update = new Document("$set",
+        // // new Document("sections.$[section].questions.$[question]",
+        // updatedQuestion));
+
+        // // // Ánh xạ các giá trị của section và question vào update
+        // // List<Bson> arrayFilters = new ArrayList<>();
+        // // arrayFilters.add(Filters.eq("section.questions.questionGuid",
+        // questionGuid));
+        // // arrayFilters.add(Filters.eq("question.questionGuid", questionGuid));
+
+        // // UpdateOptions options = new UpdateOptions().arrayFilters(arrayFilters);
+        // // collection.updateOne(sectionFilter, update, options);
+        // // Tìm section và câu hỏi cần cập nhật
+
+        // Document update = new Document("$set", updatedQuestion);
+        // collection.updateOne(sectionFilter, update);
+
+        // System.out.println(sectionFilter);
+        // Document update = new Document("$set", new Document("sections.$.questions.$",
+        // updatedQuestion));
+
+        // // Thực hiện cập nhật câu hỏi
+        // collection.updateOne(sectionFilter, update);
     }
 
-    public void DeleteQuestion(String sectionGuid, String questionGuid) {
+    public void DeleteQuestion( String questionGuid) {
         var connection = Connection.createConnection();
         MongoDatabase database = connection.getDatabase("OhMyQuiz");
         MongoCollection<Document> collection = database.getCollection("Quiz");
-    
+
         // Tìm section và câu hỏi cần xóa
-        Bson sectionFilter = Filters.eq("sections.sectionGuid", sectionGuid);
-        Document update = new Document("$pull", new Document("sections.$.questions", new Document("questionGuid", questionGuid)));
-    
+        Bson sectionFilter = Filters.eq("sections.questions.questionGuid", questionGuid);
+        Document update = new Document("$pull",
+                new Document("sections.$.questions", new Document("questionGuid", questionGuid)));
+
         // Thực hiện xóa câu hỏi
         collection.updateOne(sectionFilter, update);
-        
+
     }
 
-
-    public void addAnswer(String questionGuid, String answerContent) {
+    public void addAnswer(String questionGuid, String answerContent ,boolean isCorrect) {
         var connection = Connection.createConnection();
         MongoDatabase database = connection.getDatabase("OhMyQuiz");
         MongoCollection<Document> collection = database.getCollection("Quiz");
-    
+
         // Tạo document cho câu trả lời
         Document answerDocument = new Document();
         String answerGuid = UUID.randomUUID().toString();
         answerDocument.append("answerGuid", answerGuid);
         answerDocument.append("content", answerContent);
-    
+        answerDocument.append("isCorrect", isCorrect);
         // Tìm câu hỏi trong tài liệu
         Bson sectionFilter = Filters.eq("sections.questions.questionGuid", questionGuid);
-        Document sectionUpdate = new Document("$push", new Document("sections.$.questions.$[question].answers", answerDocument));
-        UpdateOptions options = new UpdateOptions().arrayFilters(Arrays.asList(Filters.eq("question.questionGuid", questionGuid)));
+        Document sectionUpdate = new Document("$push",
+                new Document("sections.$.questions.$[question].answers", answerDocument));
+        UpdateOptions options = new UpdateOptions()
+                .arrayFilters(Arrays.asList(Filters.eq("question.questionGuid", questionGuid)));
         collection.updateOne(sectionFilter, sectionUpdate, options);
     }
 
-   
+    public void deleteAnswer(String answerGuid) {
+        var connection = Connection.createConnection();
+        MongoDatabase database = connection.getDatabase("OhMyQuiz");
+        MongoCollection<Document> collection = database.getCollection("Quiz");
 
+        // Tìm câu hỏi chứa câu trả lời cần xóa
+        Bson answerFilter = Filters.eq("answerGuid", answerGuid);
+        Bson update = Updates.pull("sections.$[].questions.$[].answers", answerFilter);
 
-   
+        // Thực hiện xóa câu trả lời
+        collection.updateOne(new Document(), update);
+    }
+
+    public void updateAnswer(String aswerGuid, String newContent, boolean isCorrect) {
+        var connection = Connection.createConnection();
+        MongoDatabase database = connection.getDatabase("OhMyQuiz");
+        MongoCollection<Document> collection = database.getCollection("Quiz");
+
+        Bson filtered = Filters.eq("sections.questions.answers.answerGuid", aswerGuid);
+
+        Document update = new Document();
+        update.append("sections.$[section].questions.$[question].answers.$[answer].content", newContent);
+        update.append("sections.$[section].questions.$[question].answers.$[answer].isCorrect", isCorrect);
+        Document doUpdate = new Document("$set", update);
+
+        List<Bson> arrayFilters = new ArrayList<>();
+        arrayFilters.add(Filters.eq("section.questions.answers.answerGuid", aswerGuid));
+        arrayFilters.add(Filters.eq("question.answers.answerGuid", aswerGuid));
+        arrayFilters.add(Filters.eq("answer.answerGuid", aswerGuid));
+
+        UpdateOptions options = new UpdateOptions().arrayFilters(arrayFilters);
+        collection.updateOne(filtered, doUpdate, options);
+
+        // if (isTrue) {
+        //     Document result = collection.find(filtered)
+        //             .projection(Projections.include("sections.questions"))
+        //             .first();
+        //     if (result != null) {
+        //         System.out.println(result.toJson());
+        //         String questionGuid = result.getString("sections.questions.questionGuid");
+        //         System.out.println(questionGuid);
+        //         if (questionGuid != null) {
+        //             var questionFilterd = Filters.eq("sections.questions.questionGuid", questionGuid);
+
+        //             Document addCorrectAns = new Document();
+        //             addCorrectAns.append("sections.$[section].questions.$[question].correctAnswer", aswerGuid);
+        //             var doAdd = new Document("$push", addCorrectAns);
+
+        //             List<Bson> arrayFilters2 = new ArrayList<>();
+        //             arrayFilters2.add(Filters.eq("section.questions.questionGuid", questionGuid));
+        //             arrayFilters2.add(Filters.eq("question.questionGuid", questionGuid));
+
+        //             UpdateOptions options2 = new UpdateOptions().arrayFilters(arrayFilters2);
+        //             collection.updateOne(questionFilterd, doAdd, options2);
+
+        //         }
+
+        //     }
+
+        // }
+
+        return;
+    }
+
 }

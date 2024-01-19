@@ -329,8 +329,12 @@ public class CreateQuizController {
 // add aswer
 @FXML
 private void addSectionButtonClicked() {
-  qz.UpdateQuestion("c2737831-3286-4edb-8d45-eb4cc41ae52b", "ma code java", "name the girl sun love1111", "easy");
-            
+ //qz.updateQuestion("moon", "ma code java", "name the girl sun love1111", "easy");
+           // qz.deleteAnswer("73ec161c-82c1-49b6-9eaf-cbfeedb10baa");
+           qz.updateAnswer("31e1c2e4-a70d-4fa8-bccb-bc12dfbed35f", "chay di ma set dung", true);
+          //qz.UpdateQuestion("73ec161c-82c1-49b6-9eaf-gfdgfgdgfdguj", "sun", "name the girl sun love", "easy");
+
+         // qz.DeleteQuestion("73ec161c-82c1-49b6-9eaf-gfdgfgdgfdguj");
 }
 
 }
