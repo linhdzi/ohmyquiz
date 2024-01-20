@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+   minWidth="-Infinity" prefHeight="475.0" prefWidth="660.0"
+   style="-fx-background-color: linear-gradient(to bottom, #293950, #232324);"
+   xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="ohmyquiz.controllers.UiGameController">
+   <stylesheets>
+      <URL value="@../css/uiGame.css" />
+   </stylesheets>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="flowPane" prefHeight="50.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <ChoiceBox id="sectionChoicebox" fx:id="sectionChoicebox" prefHeight="34.0"
+                           prefWidth="100.0">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ChoiceBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="34.0"
+                           style="-fx-spacing: 3px; -fx-background-color: #35435B; -fx-background-radius: 20;">
+                           <children>
+                              <Label alignment="CENTER" styleClass=" worked " text="1"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass=" action" text="2"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="3"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="4"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="5"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="6"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="7"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="8"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="9"
+                                 textAlignment="CENTER" />
+                              <Label alignment="CENTER" styleClass="selectQuestionLabel" text="10"
+                                 textAlignment="CENTER" />
+                           </children>
+                           <padding>
+                              <Insets left="3.0" right="3.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <VBox fx:id="nextVbox" alignment="CENTER" prefHeight="74.0" prefWidth="660.0"
+         BorderPane.alignment="CENTER">
+         <children>
+            <Button id="nextButton" alignment="CENTER" contentDisplay="CENTER"
+               mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0"
+               style="-fx-background-color: white; -fx-background-radius: 25px; -fx-font-weight: bold;"
+               text="Next" />
+         </children>
+      </VBox>
+   </bottom>
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="quizHbox" accessibleRole="COMBO_BOX" alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <HBox fx:id="timeHbox" alignment="CENTER" prefHeight="31.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER"
+                                 style="-fx-font-size: 20px; -fx-text-fill: white;" text="Time" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="currentQuestionHbox" alignment="CENTER" prefHeight="30.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER"
+                                 style="-fx-font-size: 12px; -fx-text-fill: white;"
+                                 text="QUESTION 2 OF 10" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Label fx:id="questionLabel" alignment="TOP_CENTER"
+                                 contentDisplay="CENTER" prefHeight="119.0" prefWidth="365.0"
+                                 style="-fx-font-size: 20px; -fx-text-fill: white;-fx-font-weight: bold"
+                                 text="Who came up with the idea of the camera obscura?"
+                                 textAlignment="CENTER" wrapText="true" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox fx:id="answerHbox" alignment="TOP_CENTER" minHeight="-Infinity"
+               minWidth="-Infinity" prefHeight="190.0" prefWidth="660.0" style="-fx-spacing: 10px;">
+               <children>
+                  <GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity"
+                     prefHeight="170.0" prefWidth="525.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity"
+                           minWidth="-Infinity" prefHeight="75.0" prefWidth="165.0"
+                           style="-fx-font-weight:bold;-fx-background-color: #293A51; -fx-background-radius: 10px; -fx-text-fill: white; -fx-pref-width: 165; -fx-pref-height: 75;"
+                           styleClass="answer" text="answer 1" wrapText="true">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity"
+                           minWidth="-Infinity" prefHeight="75.0" prefWidth="165.0"
+                           style="-fx-font-weight:bold;-fx-background-color: #293A51; -fx-background-radius: 10px; -fx-text-fill: white; -fx-pref-width: 165; -fx-pref-height: 75;"
+                           styleClass="answer" text="answer 1" wrapText="true"
+                           GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity"
+                           minWidth="-Infinity" prefHeight="75.0" prefWidth="165.0"
+                           style="-fx-font-weight:bold;-fx-background-color: #293A51; -fx-background-radius: 10px; -fx-text-fill: white; -fx-pref-width: 165; -fx-pref-height: 75;"
+                           styleClass="answer" text="answer 1" wrapText="true"
+                           GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity"
+                           minWidth="-Infinity" prefHeight="75.0" prefWidth="165.0"
+                           style="-fx-font-weight:bold;-fx-background-color: #293A51; -fx-background-radius: 10px; -fx-text-fill: white; -fx-pref-width: 165; -fx-pref-height: 75;"
+                           styleClass="answer" text="answer 1" wrapText="true" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity"
+                           minWidth="-Infinity" prefHeight="75.0" prefWidth="165.0"
+                           style="-fx-font-weight:bold;-fx-background-color: #293A51; -fx-background-radius: 10px; -fx-text-fill: white; -fx-pref-width: 165; -fx-pref-height: 75;"
+                           styleClass="answer" text="answer 1" wrapText="true"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </HBox.margin>
+                  </GridPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
