@@ -1,8 +1,4 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "java.compile.nullAnalysis.mode": "automatic",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\Laptop92\\Downloads\\charm-glisten-4.4.1.jar"
-    ]
+    "java.compile.nullAnalysis.mode": "automatic"
 }

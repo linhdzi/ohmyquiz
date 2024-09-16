@@ -1,0 +1,20 @@
+#action{
+    -fx-border-width: 0 0 3 0 ;
+    -fx-border-color: #7F3CB2 ;
+}
+#action .label{
+    -fx-text-fill: #7F3CB2 ;
+}
+.menu .label{
+    -fx-padding: 11, 0, 11, 0;
+    -fx-font-size: 16px;
+}
+.menu .label:hover{
+    -fx-text-fill: #7F3CB2  ;
+    
+}
+.menu:hover{   
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: #7F3CB2 ;
+    -fx-background-color: #F9F9F9 !important;
+}

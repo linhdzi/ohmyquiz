@@ -13,25 +13,18 @@ public class User {
     private String country;
 
     public static Map<String, String> role = new HashMap<>();
-    {
-        role.put("learner", "learner");
+    static {
         role.put("Learner", "learner");
-        role.put("trainer", "trainer");
         role.put("Trainer", "trainer");
     }
+
     public static Map<String, String> gender = new HashMap<>();
-    {
-        gender.put("male", "male");
-        gender.put("female", "female");
-        gender.put("other", "prefer not to disclose");
+    static {
         gender.put("Male", "male");
         gender.put("Female", "female");
         gender.put("Other", "prefer not to disclose");
     }
 
-    public String capitalizeFirstLetter(String input) {
-        return input.substring(0, 1).toUpperCase() + input.substring(1);
-    }
     public String getGuid() {
         return this.guid;
     }
